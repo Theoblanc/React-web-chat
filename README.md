@@ -1,7 +1,9 @@
 # React-web-chat
 made React-web-chat program (react + node.js + graphql + apollo)
 
-*Technology Stack*
+
+
+**Technology Stack**
 
 | Component | Technology |
 |---|:---:|
