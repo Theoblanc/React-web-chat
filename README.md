@@ -9,5 +9,5 @@ made React-web-chat program (react + node.js + graphql + apollo)
 | `Backend` | node.js, grapql |
 | `Security` | JWTtoken |
 | `Auth` | Facebook, Local |
-| `Database | Mysql, Prisma |
+| `Database` | Mysql, Prisma |
 | `Client Build	` | npm, yarn, webpack, babel |
