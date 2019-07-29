@@ -1,11 +1,13 @@
 type User {
   id: ID! @id
+  avatar: File
   username: String! @unique
   firstName: String!
   lastName: String!
   email: String! @unique
   password: String!
   room: [Room!]!
+  loginSecret: String
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -24,6 +26,13 @@ type Message {
   from: User! @relation(name: "From")
   to: User! @relation(name: "To")
   room: Room!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type File {
+  id: ID! @id
+  url: String!
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }

@@ -1,13 +1,15 @@
 type User {
   id: ID! 
+  avatar: File
   username: String! 
   firstName: String!
   lastName: String!
   email: String! 
   password: String!
   room: [Room!]!
-  createdAt: Int! 
-  updatedAt: Int!
+  loginSecret: String
+  createdAt: String! 
+  updatedAt: String!
 }
 
 
@@ -15,8 +17,8 @@ type Room {
   id: ID!
   participants: [User!]!
   messages: [Message!]!
-  createdAt: Int!
-  updatedAt: Int!
+  createdAt: String!
+  updatedAt: String!
 }
 
 type Message {
@@ -25,6 +27,14 @@ type Message {
   from: User! 
   to: User! 
   room: Room!
-  createdAt: Int!
-  updatedAt: Int!
+  createdAt: String!
+  updatedAt: String!
 }
+
+type File {
+  id: ID!
+  url: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
