@@ -2,6 +2,8 @@
 <br />
 
 > made React-web-chat program (react + node.js + graphql + apollo)
+-------------
+
 
 <br />
 
@@ -21,8 +23,10 @@
 
 - [x] Create Account
 - [x] Search by user
-- [ ] Request Secret
-- [ ] Login(Token) / Facebook API Login 
+- [x] Request Secret
+- [x] Confirm Secret
+- [X] Login(Token) 
+- [ ] Facebook API Login 
 - [ ] See Profile
 - [ ] LogOut 
 - [ ] Find User
@@ -45,3 +49,9 @@
 - [ ] Chat
 - [ ] Upload File
 - [ ] Direct Message
+
+## LOGIN 방법 
+
+1. 로그인을 한다.
+2. email로 secret키가 감.
+3. 확인 후 입력하면 JWT TOKEN 발행 (TOKEN은 1시간)
