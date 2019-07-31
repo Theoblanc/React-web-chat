@@ -1,8 +1,7 @@
 # React-web-chat
 <br />
 
-> made React-web-chat program (react + node.js + graphql + apollo)
--------------
+made React-web-chat program (react + node.js + graphql + apollo)
 
 
 <br />

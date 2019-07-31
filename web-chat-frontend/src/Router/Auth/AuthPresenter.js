@@ -47,70 +47,77 @@ const Form = styled(Box)`
   }
 `;
 
+
+
 export default ({
-  action,
+  action = "logIn",
   username,
+  pasword,
   firstName,
   lastName,
   email,
-  pasword,
+  password,
   setAction,
   onSubmit,
   secret
 }) => (
-  <Wrapper>
-    <Form>
-        <>
-          <Helmet>
-            <title>Log In | Prismagram</title>
-          </Helmet>
-          <form onSubmit={onSubmit}>
-            <Input placeholder={"Email"} {...email} type="email" />
-            <Input placeholder={"Password"} {...pasword} type="password" />
-            <Button text={"Log in"} />
-          </form>
-        </>
-      {action === "signUp" && (
-        <>
-          <Helmet>
-            <title>Sign Up | Prismagram</title>
-          </Helmet>
-          <form onSubmit={onSubmit}>
-            <Input placeholder={"First name"} {...firstName} />
-            <Input placeholder={"Last name"} {...lastName} />
-            <Input placeholder={"Email"} {...email} type="email" />
-            <Input placeholder={"Username"} {...username} />
-            <Button text={"Sign up"} />
-          </form>
-        </>
-      )}
-      {action === "confirm" && (
-        <>
-          <Helmet>
-            <title>Confirm Secret | Prismagram</title>
-          </Helmet>
-          <form onSubmit={onSubmit}>
-            <Input placeholder="Paste your secret" required {...secret} />
-            <Button text={"Confirm"} />
-          </form>
-        </>
-      )}
-    </Form>
-
-    {action !== "confirm" && (
-      <StateChanger>
-        {action === "logIn" ? (
+    <Wrapper>
+      <Form>
+        {action === "logIn" && (
           <>
-            Don't have an account?{" "}
-            <Link onClick={() => setAction("signUp")}>Sign up</Link>
-          </>
-        ) : (
-          <>
-            Have an account?{" "}
-            <Link onClick={() => setAction("logIn")}>Log in</Link>
+            <Helmet>
+              <title>Log In | Chat-web </title>
+            </Helmet>
+            <form onSubmit={onSubmit}>
+              <Input placeholder={"Email"} {...email} type="email" />
+              <Input placeholder={"Password"} {...password} type="password" />
+              <Button text={"Log in"} />
+            </form>
           </>
         )}
-      </StateChanger>
-    )}
-  </Wrapper>
-);
+        {action === "signUp" && (
+          <>
+            <Helmet>
+              <title>Sign Up | Chat-web </title>
+            </Helmet>
+            <form onSubmit={onSubmit}>
+              <Input placeholder={"First name"} {...firstName} />
+              <Input placeholder={"Last name"} {...lastName} />
+              <Input placeholder={"Email"} {...email} type="email" />
+              <Input placeholder={"Username"} {...username} />
+              <Input placeholder={"Password"} {...pasword} />
+              <Button text={"Sign up"} />
+            </form>
+          </>
+        )}
+        {action === "confirm" && (
+          <>
+            <Helmet>
+              <title>Confirm Secret | Chat-web </title>
+            </Helmet>
+            <form onSubmit={onSubmit}>
+              <Input placeholder="Paste your secret" required {...secret} />
+              <Button text={"Confirm"} />
+            </form>
+          </>
+        )}
+      </Form>
+
+      {action !== "confirm" && (
+        <StateChanger>
+          {action === "logIn" ? (
+            <>
+              Don't have an account?{" "}
+              <Link onClick={() => setAction("signUp")}>Sign up</Link>
+            </>
+          ) : (
+              <>
+                Have an account?{" "}
+                <Link onClick={() => setAction("logIn")}>Log in</Link>
+              </>
+            )}
+        </StateChanger>
+      )}
+
+    </Wrapper>
+  );
