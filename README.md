@@ -39,7 +39,8 @@ made React-web-chat program (react + node.js + graphql + apollo)
 
 - [ ] Create Account
 - [ ] Search by user
-- [ ] Login(Token) / Facebook API Login 
+- [x] Login(Token)
+- [ ] Facebook API Login 
 - [ ] See Profile
 - [ ] LogOut 
 - [ ] Find User

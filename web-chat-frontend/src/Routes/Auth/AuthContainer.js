@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import AuthPresenter from "./AuthPresenter";
 import useInput from "../../Hooks/useInput";
-import { useMutation, useQuery } from "react-apollo-hooks";
+import { useMutation } from "react-apollo-hooks";
 import {
   LOG_IN,
   CREATE_ACCOUNT,
-  CONFIRM_PASSWORD,
+  CONFIRM_SECRET,
   LOCAL_LOG_IN
 } from "./AuthQueries";
 import { toast } from "react-toastify";
@@ -15,11 +15,10 @@ export default () => {
   const username = useInput("");
   const firstName = useInput("");
   const lastName = useInput("");
-  const secret = useInput("");
   const email = useInput("");
   const password = useInput("");
 
-  const requestSecretMutation = useMutation(LOG_IN, {
+  const requestSecretMutation = useMutation(CONFIRM_SECRET, {
     variables: { email: email.value }
   });
 
@@ -33,42 +32,41 @@ export default () => {
     }
   });
 
-  const confirmPasswordQuery = useQuery(CONFIRM_PASSWORD, {
+  const confirmLoginMutation = useMutation(LOG_IN , {
     variables: {
       email: email.value,
       password: password.value
     }
   });
-
   const localLogInMutation = useMutation(LOCAL_LOG_IN);
 
   const onSubmit = async e => {
     e.preventDefault();
-
-    if (action === "logIn") {
-      if (email.value !== "" && password.value !== "") {
+    if (action === "confirm") {
+      if (email.value !== "") {
         try {
           const {
-            data: { confirmPassword: token }
-          } = await confirmPasswordQuery();
-          if (token !== "" && token !== undefined) {
-            localLogInMutation({ variables: { token } });
-          } else {
+            data: { requestSecret }
+          } = await requestSecretMutation();
+          if (!requestSecret) {
+            toast.error("You dont have an account yet, create one");
             setTimeout(() => setAction("signUp"), 3000);
-            throw Error();
+          } else {
+            toast.success("Check your inbox for your login secret");
+            setAction("confirm");
           }
         } catch {
-          toast.error("Can't confirm email or password ,check again");
+          toast.error("Can't request secret, try again");
         }
       } else {
-        toast.error("Email is required and password is required");
+        toast.error("Email is required");
       }
     } else if (action === "signUp") {
       if (
-        email.value !== "" &&
-        username.value !== "" &&
         firstName.value !== "" &&
         lastName.value !== "" &&
+        username.value !== "" &&
+        email.value !== "" && 
         password.value !== ""
       ) {
         try {
@@ -79,7 +77,7 @@ export default () => {
             toast.error("Can't create account");
           } else {
             toast.success("Account created! Log In now");
-            setTimeout(() => setAction("logIn"), 3000);
+            setTimeout(() => setAction("confirm"), 1000);
           }
         } catch (e) {
           toast.error(e.message);
@@ -87,37 +85,38 @@ export default () => {
       } else {
         toast.error("All field are required");
       }
-    } else if (action === "confirm") {
-      if (secret.value !== "") {
+    } else if (action === "logIn") {
+      if (email.value !== "" && password.value !== "") {
         try {
           const {
-            data: { requestSecret }
-          } = await requestSecretMutation();
-          if (!requestSecret) {
-            toast.error("You dont have an account yet, create one");
+            data: { confirmLogin: token }
+          } = await confirmLoginMutation();
+          if (token !== "" && token !== undefined) {
+            localLogInMutation({ variables: { token } });
+
           } else {
-            toast.success("Check your inbox for your login secret");
-            setAction("confirm");
+            throw Error();
+            
           }
         } catch {
-          toast.error("Can't request secret, try again");
+          toast.error("Cant confirm secret,check again");
+          console.log("456");
 
         }
+      }
     }
-  }
-};
+  };
 
-return (
-  <AuthPresenter
-    setAction={setAction}
-    action={action}
-    username={username}
-    firstName={firstName}
-    lastName={lastName}
-    email={email}
-    password={password}
-    secret={secret}
-    onSubmit={onSubmit}
-  />
-);
+  return (
+    <AuthPresenter
+      setAction={setAction}
+      action={action}
+      username={username}
+      firstName={firstName}
+      lastName={lastName}
+      email={email}
+      password={password}
+      onSubmit={onSubmit}
+    />
+  );
 };
