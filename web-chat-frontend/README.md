@@ -1,2 +1,0 @@
-# Instargram clone Frontend
-

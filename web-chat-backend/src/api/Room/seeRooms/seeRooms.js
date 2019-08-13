@@ -8,7 +8,7 @@ export default {
       return prisma.rooms({
         where: {
           participants_some: {
-            id: user.id
+            id: user.id,
           }
         }
       });

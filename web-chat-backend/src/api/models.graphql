@@ -1,12 +1,13 @@
 type User {
   id: ID! 
-  avatar: File
+  avatar: String
   username: String! 
   firstName: String!
   lastName: String!
   email: String! 
   password: String!
-  room: [Room!]!
+  rooms: [Room!]!
+  roomsCount: Int!
   loginSecret: String
   createdAt: String! 
   updatedAt: String!
@@ -15,6 +16,7 @@ type User {
 
 type Room {
   id: ID!
+  roomName: String!
   participants: [User!]!
   messages: [Message!]!
   createdAt: String!

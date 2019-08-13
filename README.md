@@ -31,6 +31,7 @@ made React-web-chat program (react + node.js + graphql + apollo)
 - [ ] Find User
 - [ ] Make Room
 - [ ] Chat Room
+- [ ] Send Message
 - [ ] Chat
 - [ ] Upload File
 - [ ] Direct Message

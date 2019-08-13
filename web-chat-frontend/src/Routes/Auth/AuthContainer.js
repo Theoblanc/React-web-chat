@@ -100,8 +100,6 @@ export default () => {
           }
         } catch {
           toast.error("Cant confirm secret,check again");
-          console.log("456");
-
         }
       }
     }

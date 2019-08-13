@@ -20,13 +20,13 @@ const GridRoom = styled.div`
 `
 
 
-export default () => (
+export default ({ username, email, avatar, rooms}) => (
     <WrapHeader>
         <GridUser>
-            <UserHeader />
+            <UserHeader username={username} email={email} avatar={avatar}/>
         </GridUser>
         <GridRoom>
-            <RoomHeader />
+            <RoomHeader rooms={rooms} />
         </GridRoom>
     </WrapHeader>
 );

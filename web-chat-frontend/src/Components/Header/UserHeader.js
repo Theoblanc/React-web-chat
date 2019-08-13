@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const WrapHeader = styled.div`
-  border-bottom: 1px solid #e0e0e0;
+  border: 1px solid #e0e0e0;
   z-index: 1;
   flex: none;
   display: flex;
@@ -36,7 +36,7 @@ const UserName = styled.h3`
    }
 `
 
-const Id = styled.h5`
+const Email = styled.h5`
   font-size: 0.8rem;
   margin: 0;
   margin-top: 0.2rem;
@@ -57,12 +57,12 @@ const Id = styled.h5`
 
 
 
-export const UserHeader = ({ avatar, username, id }) => (
+export const UserHeader = ({ username, email, avatar }) => (
     <WrapHeader>
         <Img src={avatar} alt={username} />
         <Text>
-            <UserName>{username}정태현</UserName>
-            <Id>{id && `@${id}`}123</Id>
+            <UserName>{username}</UserName>
+            <Email>{email}</Email>
         </Text>
     </WrapHeader>
 

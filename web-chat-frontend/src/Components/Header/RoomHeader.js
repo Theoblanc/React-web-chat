@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Wrap = styled.div`
   display: flex;
+  border-right: 1px solid #e0e0e0;
   border-bottom: 1px solid #e0e0e0;
   flex: 1 1 0;
   z-index: 1;
@@ -35,16 +36,14 @@ const Button = styled.button`
 
 
 
-export const RoomHeader = ({ room, username, id }) => (
+export const RoomHeader = ({ rooms, username, id }) => (
     <Wrap>
         <Room>
             <RoomTitle>
-             {room}
-             genner
-
+             {rooms[0].roomName}
             </RoomTitle>
         </Room>
-        <Button>84명</Button>
+        <Button>{rooms.length}</Button>
 
     </Wrap>
 

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Auth from "../Routes/Auth";
-import Feed from "../Routes/Feed";
+import Feed from "../Routes/ChatRoom";
 
 const LoggedInRoutes = () => (
   <Switch>
