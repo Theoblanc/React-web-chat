@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import RoomList from './RoomList';
-import MessageList from './MessageList'
-import { CreateRoomForm } from '../CreateMessage/MessageInput';
+
 
 const WrapHeader = styled.div`
     display: grid;
@@ -24,10 +22,8 @@ const Chat = styled.div`
 export default () => (
     <WrapHeader>
         <GridRooms>
-            <RoomList />
         </GridRooms>
         <Chat>
-            <MessageList />
         </Chat>
     </WrapHeader>
 );
