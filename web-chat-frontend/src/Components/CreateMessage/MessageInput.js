@@ -4,49 +4,37 @@ import Input from '../Input';
 import Button from '../Button';
 
 const Form = styled.form`
-    flex: none;
-    position: relative;
-    display: flex;
-    align-items: center;
-    border-top: 1px solid #e0e0e0;
-    height: 3.6rem;
-    display: flex;
-    margin-top: auto;
-    width: 270px;
-
-    input{
-        cursor: pointer;
-
-    }
-    
-
+  flex: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #e0e0e0;
+  height: 3.6rem;
+  width: 100%;
     Form > * {
         margin-right: 0.38rem;
     }
 
 `
-
 const MessageInput = styled(Input)`
-    flex: 1 1 100%;
     padding: 1rem;
     border: 0;
     font-size: 1rem;
+    width: 100%;
+
+
 `
 
 const SendButton = styled(Button)`
-    flex: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    z-index: 1;
-    
+  border: 0;
+  background: #fff;
+  padding: 0;
+  cursor: pointer;
+  width: 100px;
+
+
 `
-export const CreateRoomForm = ({ submit }) => (
+export const CreateMessageForm = ({ submit }) => (
     <Form onSubmit={e => {
         e.preventDefault()
         submit({
@@ -56,9 +44,9 @@ export const CreateRoomForm = ({ submit }) => (
         e.target[0].value = ''
     }}
     >
-        <MessageInput placeholder="Create a Room" />
+        <MessageInput placeholder="Send a Message" />
+        <SendButton text="전송" type="submit" />
 
-        <SendButton type="submit" text="+" />
 
     </Form>
-)
+);
